@@ -8,12 +8,13 @@ This project demonstrates how to use Apache Airflow to fetch weather data for mu
 - [Usage](#usage)
 - [DAG Configuration](#dag-configuration)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Prerequisites
 
 - Python 3.x
+- AWS Cloud(Used EC2 Instances)
 - [Apache Airflow](https://airflow.apache.org/docs/apache-airflow/stable/start.html) installed
+  
 
 ## Setup
 
@@ -34,16 +35,33 @@ This project demonstrates how to use Apache Airflow to fetch weather data for mu
 
 ## Usage
 
-1. Start your Airflow web server and scheduler:
+1. Create EC2 Instance and then install some prerequisites.
+   Run commands :-
+   ```bash
+   sudo apt-get update
+   sudo apt install python3-pip
+   sudo pip install apache-airflow
+   sudo pip install pandas
+   sudo pip install requests
+   ```
+
+3. Start your Airflow web server:
 
     ```bash
-    airflow webserver -D
-    airflow scheduler -D
+    airflow standalone
     ```
+    Separate window for update code and dag file
 
-2. Access the Airflow UI in your browser (default: http://localhost:8080).
-   
-3. Trigger the "weather_data_dag" manually or set the desired schedule interval.
+    ```bash
+    sudo nano weather_data_fetcher.py
+    sudo nano dag_file.py
+    ```
+    
+4. Access the Airflow UI in your browser (default: public_address_ec2_instance:8080).
+5. Also update IAM Rule for particular instance otherwise it through Error :- Access Denied
+   Add IAM Policy :- AmazonS3FullAccess, AmazonEC2FullAccess
+
+6. Trigger the "weather_data_dag" manually or set the desired schedule interval.
 
 ## DAG Configuration
 
@@ -58,6 +76,4 @@ In the `weather_data_dag.py` file, you can configure:
 
 Contributions are welcome! If you find any issues or improvements, feel free to open a pull request.
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
