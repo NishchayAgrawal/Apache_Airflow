@@ -2,6 +2,9 @@
 
 This project demonstrates how to use Apache Airflow to fetch weather data for multiple cities from an API, sort the data, and store it in a CSV file.
 
+![](https://github.com/Gaurav0807/Apache_Airflow/assets/54076460/a5563b4f-fbe4-491c-9d2d-b3f0a57e2111)
+
+
 ## Table of Contents
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
@@ -15,6 +18,7 @@ This project demonstrates how to use Apache Airflow to fetch weather data for mu
 - AWS Cloud(Used EC2 Instances)
 - [Apache Airflow](https://airflow.apache.org/docs/apache-airflow/stable/start.html) installed
   
+
 
 ## Setup
 
